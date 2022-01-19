@@ -32,6 +32,7 @@ class Die:
         Args:
             self (Die): An instance of Die.
         """
-        random_num = random.randint(1, 6)
-        self.value = random_num
-        self.points += random_num
+        self.value = random.randint(1, 6)
+        # The player scores 50 points for each five that is rolled.
+        # The player scores 100 points for each one that is rolled.
+        self.points = 50 if self.value == 5 else 100 if self.value == 1 else 0
