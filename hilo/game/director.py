@@ -8,10 +8,11 @@ class Director:
     The responsibility of a Director is to control the sequence of play.
 
     Attributes:
-        cards (List[Card]): A list of Card instances.
-        is_playing (boolean): Whether or not the game is being played.
         score (int): The score for one round of play.
-        total_score (int): The score for the entire game.
+        is_playing (boolean): Whether or not the game is being played.
+        the_card (Card): An instance of Card.
+        next_card (Card): An instance of Card.
+        the_card_value (int): The next card value for the next round of the game as the card value.
     """
 
     def __init__(self):
@@ -51,11 +52,13 @@ class Director:
 
     def guess_hi_or_lo(self):
         """
-        Ask the user if they want to drawn.
+        Ask the player to guess if the next card drawn by the dealer will be higher or lower than 
+        the previous one. Points are won or lost based on whether or not the player guessed correctly.
 
         Args:
             self (Director): An instance of Director.
         """
+        # The current card is displayed.
         if(self.the_card_value == 0):
             self.the_card.drawn()
             self.next_card.drawn()
@@ -72,8 +75,11 @@ class Director:
         while(guess_option not in("h", "l")):
             guess_option = input("Higher or lower? You must enter 'h' or 'l' ").lower()
         
+        # The the next card is displayed.
         print(f"Next card was: {self.next_card.value}")
 
+        # The player earns 100 points if they guessed correctly.
+        # The player loses 75 points if they guessed incorrectly.
         if(guess_option == "l"):
             if(self.next_card.value == self.the_card.value):
                 self.score
@@ -94,16 +100,14 @@ class Director:
 
     def do_outputs(self):
         """
-        Displays the dice and the score. Also asks the player if they want to roll again. 
+        Displays the score. Also if a player reaches 0 points end the game.
 
         Args:
             self (Director): An instance of Director.
         """
-        # The dice values and player score are displayed on the screen.
         print(f"Your roll score is: {self.score}")
-        #print(f"Your total score is: {self.total_score}\n")
 
-        # If the player does not roll any ones or fives the game is over.
+        # If a player reaches 0 points the game is over.
         self.is_playing = (self.score > 0)
 
         if not self.is_playing:
@@ -118,12 +122,14 @@ class Director:
             self (Director): An instance of Director.
         """
         # The player is asked, "Play again?" at the end of each turn. Plus enhanced input validation.
+        # If a player has more than 0 points they decide if they want to keep playing.
         play_again = input("Play again? [y/n] ").lower()
         
         while(play_again not in("y", "n")):
             play_again = input("Play again? You must enter 'y' or 'n' ").lower()
         
-        # If the player answers "n" or no, the game is over. 
+        # If the player answers "n" or no, the game is over.
+        # If a player decides not to play again the game is over.
         self.is_playing = (play_again == "y")
 
         if not self.is_playing:
