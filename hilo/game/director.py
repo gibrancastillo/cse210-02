@@ -22,7 +22,7 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        # The player starts the game with 300 points. Clyve is testing here....
+        # The player starts the game with 300 points.
         self.score = 300
         self.is_playing = True
         self.the_card = Card()
@@ -44,11 +44,11 @@ class Director:
         while self.is_playing:
             self.guess_hi_or_lo()
             self.do_outputs()
-            if self.score <= 0:
-                break #clyve testing
+
+            # If a player reaches 0 points the game is over.
+            if(self.score <= 0): break
+
             self.will_you_keep_playing()
-            
-            
         
         print("++++++++++++++++++++++++++++++++++++")
         print("\n ------- Good game. Thanks for playing! -------\n")
@@ -110,12 +110,6 @@ class Director:
             self (Director): An instance of Director.
         """
         print(f"Your roll score is: {self.score}")
-
-        # If a player reaches 0 points the game is over.
-        self.is_playing = (self.score > 0)
-
-        if not self.is_playing:
-            return
     
 
     def will_you_keep_playing(self):
