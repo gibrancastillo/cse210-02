@@ -11,7 +11,7 @@ browse to the project's root folder. Start the program by running the following 
 python3 dice 
 ```
 You can also run the program from an IDE like Visual Studio Code. Start your IDE and open the 
-project folder. Select the main module inside the dice folder and click the "run" button.
+project folder. Select the main module inside the dice folder and click the "run" button .
 
 ## Project Structure
 ---
@@ -30,4 +30,4 @@ root                    (project root folder)
 
 ## Authors
 ---
-* Matt Manley (manleym@byui.edu)
+* Matt Manley (manleym@byui.edu)  
