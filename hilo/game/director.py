@@ -22,7 +22,7 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        # The player starts the game with 300 points.
+        # The player starts the game with 300 points. Clyve is testing here
         self.score = 300
         self.is_playing = True
         self.the_card = Card()
