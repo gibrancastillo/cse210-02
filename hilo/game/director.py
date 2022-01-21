@@ -22,7 +22,7 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        # The player starts the game with 300 points. Clyve is testing here
+        # The player starts the game with 300 points. Clyve is testing here....
         self.score = 300
         self.is_playing = True
         self.the_card = Card()
@@ -44,7 +44,11 @@ class Director:
         while self.is_playing:
             self.guess_hi_or_lo()
             self.do_outputs()
+            if self.score <= 0:
+                break #clyve testing
             self.will_you_keep_playing()
+            
+            
         
         print("++++++++++++++++++++++++++++++++++++")
         print("\n ------- Good game. Thanks for playing! -------\n")
